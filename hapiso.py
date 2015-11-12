@@ -33,59 +33,6 @@ if len(sys.argv)<4 :
 
 
 
-# data generation
-#data = vstack((rand(150,2) + array([.5,.5]),rand(150,2)))
-
-# computing K-Means with K = 2 (2 clusters)
-#centroids,_ = kmeans(data,2)
-# assign each sample to a cluster
-#idx,_ = vq(data,centroids)
-
-
-
-
-
-data3=array([[ 0.,  0.,  0.,  0.,  0.],
-       [ 0.,  0.,  0.,  0.,  0.],
-       [ 0.,  0.,  0.,  0.,  0.],
-       [ 0.,  0.,  0.,  1.,  0.]])
-
-data2=[]
-
-data2.append([ 0.,  0.,  0.,  0.,  0.])
-data2.append([ 0.,  2.,  1.,  0.,  1.])
-data2.append([ 0.,  2.,  1.,  0.,  1.])
-
-
-
-data4=array(data2)
-
-data7=np.transpose(data4)
-
-
-
-print data7
-print data7[1,:]
-print max(set(data7[1,:].tolist()), key=data7[1,:].tolist().count)
-
-
-
-# data generation
-#data = vstack((rand(5,2) + array([.5,.5]),rand(5,2)))
-
-print data4
-print "----"
-# computing K-Means with K = 2 (2 clusters)
-centroids,_ = kmeans(data4,2)
-# assign each sample to a cluster
-idx,_ = vq(data4,centroids)
-
-print "----"
-print idx
-print "----"
-
-
-
 bam=sys.argv[1]
 g1=int(sys.argv[2])
 g2=int(sys.argv[3])
@@ -169,36 +116,22 @@ for i in range(len(readsA)):
 
 
 for pileupcolumn in samfile.pileup(chr, g1, g2):
-    print 'coverage at base %s = %s' % (pileupcolumn.pos , pileupcolumn.n)
     
-    print chr1Ref[pileupcolumn.pos].lower()
     
     if pileupcolumn.n>=0:
         
         for pileupread in pileupcolumn.pileups:
-            #print pileupread
-            #if (pileupcolumn.pos>6694285):
-            #print 'coverage at base %s = %s' % (pileupcolumn.pos , pileupcolumn.n)
                 
     
-            #print pileupcolumn.pos,', '.join(array)
-            #print "pileupread.alignment.qname ",pileupread.alignment.qname
             itemindex = np.where(readsA==pileupread.alignment.qname)
-            #print "item=",itemindex[0]
             n=itemindex[0]
-            #print n
-            #print "PREVIOUS POSITION=", myListPrev[n]
-            print "current position=", pileupread.query_position
             
             if not pileupread.is_del and not pileupread.is_refskip and pileupread.query_position!='None': # to skip splicing and deletions ; tehre is still base but it comes from previous
-                print pileupread.query_position
                 myList[n]=pileupread.alignment.seq[pileupread.query_position]
                 if pileupread.alignment.seq[pileupread.query_position].lower() == chr1Ref[pileupcolumn.pos].lower() :
                     dataT[n]=0
-                    #data[pileupcolumn.pos-g1][n]=0
                 else:
                     dataT[n]=1
-                    #data[pileupcolumn.pos-g1][n]=1
             myListPrev[n]=pileupread.query_position
 
 
@@ -213,9 +146,7 @@ for pileupcolumn in samfile.pileup(chr, g1, g2):
                 k1=k1+1
             else:
                 k0=k0+1
-    #print "N's=",kN
-    #print "cov=",k1+k0
-    #print "indel ",pileupcolumn.pos,"\t",pileupread.indel
+ 
         
         #print dataT
     
@@ -223,7 +154,6 @@ for pileupcolumn in samfile.pileup(chr, g1, g2):
             for i in range(len(readsA)):
                 if dataT[i]==-1:
                     dataT[i]=0
-            print pileupcolumn.pos,"    ",kN," ",k0,"  ",k1
             #print dataT
             data.append(dataT)
                     
