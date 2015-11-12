@@ -3,16 +3,13 @@ HapIso reconstructs the haploid transcriptome of a diploid organism from long si
 
 Preliminary version :  the current version works per gene level
 
-To split gene annotations by gene please run the following command :
+To split bamby gene please use the following script :
 
 run_splitBam.sh
 
-To extract the list of the genes :
+Coordinates of the genes are stores in gene_coordinates.txt
 
-awk -F "gene_id" '{print $2}' genes.gtf | awk -F ";" '{print $1}' | sed 's/\"//g'  | sort | uniq >genes.LIST
-
-
-To run the HapIso algorith please use hapiso_v5.py
+To run the HapIso algorithm please use hapiso.py
 It requires the bam file corresponding to a gene, gene coordinates and chromosome number
 
 
