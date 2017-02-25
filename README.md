@@ -9,18 +9,19 @@ run_splitBam.sh
 
 Coordinates of the genes are stores in gene_coordinates.txt
 
-To run the HapIso algorithm please use hapiso.py It requires the bam file corresponding to a gene, gene coordinates and chromosome number.
+To run the HapIso algorithm please use hapiso.py It requires the bam file corresponding to a gene, gene coordinates and chromosome number
+HapIso requires 6 positional arguments. 
 ```
-    [1] - The bam file to run HapIso
-    [2] - Left boundary of the Gene
-    [3] - Right boundary of the Gene
+    [1] - The bam file to run HapIso - currently only supports one gene
+    [2] - Left boundary of the Gene - the start coordniate of the gene used to extract the bam file 
+    [3] - Right boundary of the Gene - the end coordniate of the gene used to extract the bam file
     [4] - Output file
-    [5] - Chromosome
-    [6] - Reference Genome in Fasta format 
+    [5] - Chromosome - the chromosome of the gene used to extract the bam file
+    [6] - Reference Genome in Fasta format - hg19_genome.fasta files can be found on 
 ```
 OUTPUTS:
 ```
-For the {input.bam} file,
+For the {input}.bam file,
 the ASE will be recorded in the {input}_ASE.txt file 
 the general output file will be recorded in the {input}_result.txt file 
 the error corrected reads will be recorded in {input}_corrected_read.txt file. 
