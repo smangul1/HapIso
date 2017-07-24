@@ -1,6 +1,6 @@
-# HapIso reconstructs the haploid transcriptome of a diploid organism from long single molecule reads
+# HapIso : Haplotype Isoforms 
 
-## HapIso v.7
+![](https://github.com/smangul1/HapIso/blob/master/hapiso.png)
 
 This program is distributed under GPL v2. If you have questions about the license of this program, please see LICENSE in the repository.
 
