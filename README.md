@@ -30,7 +30,9 @@ the general output file will be recorded in the {input}_result.txt file
 the error corrected reads will be recorded in {input}_corrected_read.txt file. 
 ```
 
+# Contact
 
+This software was developed by Serghei Mangul and Harry Yang. If you have any questions, please send an email to Serghei Mangul (smangul@ucla.edu) and Harry Yang (harry2416@gmail.com) . To report a bug please use github.
 
 
 
